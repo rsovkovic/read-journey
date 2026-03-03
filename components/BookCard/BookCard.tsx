@@ -110,7 +110,7 @@ export default function BookCard({
       {/* Контейнер для зображення — aspect ratio збереже пропорції автоматично */}
       <div className="relative mb-2 aspect-137/208 w-full overflow-hidden rounded-lg">
         <Image
-          src={book.imageUrl || '/image_no.png'}
+          src={book.imageUrl || '/image/image_no.png'}
           alt={book.title}
           fill
           priority={index < 6}

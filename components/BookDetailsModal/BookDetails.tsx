@@ -11,7 +11,7 @@ export default function BookDetails({ book, actionButton }: BookDetailsProps) {
     <div className="flex flex-col items-center text-center">
       <div className="relative mb-2 aspect-10/16 w-36 overflow-hidden rounded-lg shadow-xl md:w-38">
         <Image
-          src={book.imageUrl || '/image_no.png'}
+          src={book.imageUrl || '/image/image_no.png'}
           alt={book.title}
           fill
           priority

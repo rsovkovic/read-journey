@@ -38,7 +38,7 @@ interface BooksProgress {
 }
 export type BookStatus = 'unread' | 'in-progress' | 'done';
 
-interface TimeLeft {
+export interface TimeLeft {
   hours: number;
   minutes: number;
   seconds: number;

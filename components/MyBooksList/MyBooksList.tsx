@@ -48,17 +48,9 @@ export default function MyLibraryBooks({ onDeleteBook, onBookClick }: Props) {
         <div className="flex flex-col items-center justify-center py-20 text-center">
           {/* Контейнер для картинки (з макету) */}
           <div className="mb-5 flex h-25 w-25 items-center justify-center rounded-full bg-(--bg-blok) md:h-32.5 md:w-32.5">
-            {/* <Image
-              src="/books_desktop.png"
-              alt="Empty library"
-              width={70}
-              height={70}
-              className="h-12.5 w-12.5 md:h-17.5 md:w-17.5"
-            /> */}
-
             <div className="relative h-12.5 w-12.5 md:h-17.5 md:w-17.5">
               <Image
-                src="/books_desktop.png"
+                src="/image/books_desktop.png"
                 alt="Empty library"
                 fill
                 sizes="(max-width: 768px) 50px, 70px"

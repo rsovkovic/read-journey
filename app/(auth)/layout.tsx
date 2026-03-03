@@ -38,7 +38,7 @@ export default function AuthLayout({
           <div className="relative w-full max-w-100">
             {/* Використовуємо Next.js Image для оптимізації */}
             <Image
-              src="/iPhone-15-Black.png" // Поклади картинку в папку public
+              src="/image/iPhone-15-Black.png" // Поклади картинку в папку public
               alt="iPhone App Preview"
               width={405}
               height={735}

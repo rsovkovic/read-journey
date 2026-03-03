@@ -129,6 +129,7 @@ export default function AddBookForm({ onAddBook, isLoading }: Props) {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<AddNewBookRequest>({
     resolver: yupResolver(addBookSchema),
@@ -137,6 +138,10 @@ export default function AddBookForm({ onAddBook, isLoading }: Props) {
 
   const onSubmit = (data: AddNewBookRequest) => {
     onAddBook(data);
+  };
+
+  const handleReset = () => {
+    reset(); // Очищає поля форми в UI
   };
 
   return (
@@ -172,6 +177,13 @@ export default function AddBookForm({ onAddBook, isLoading }: Props) {
         <Button type="submit" variant="outline" isLoading={isLoading}>
           Add book
         </Button>
+        <button
+          type="button" // Важливо! type="button", щоб не спрацьовував сабміт форми
+          onClick={handleReset}
+          className="hover:text-foreground px-4 py-3 text-sm font-medium text-(--text-secondary) underline transition-colors"
+        >
+          Reset filters
+        </button>
       </div>
     </form>
   );

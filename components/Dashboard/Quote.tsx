@@ -15,7 +15,7 @@ export const Quote = () => {
       </div> */}
 
       <Image
-        src="/books_desktop.png"
+        src="/image/books_desktop.png"
         alt="Empty library"
         width={40} // Будь-яке ціле число, що відповідає пропорціям
         height={40}
