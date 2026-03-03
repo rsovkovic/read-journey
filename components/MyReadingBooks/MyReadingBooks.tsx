@@ -15,6 +15,7 @@ interface Props {
 }
 
 export default function MyReadingBook({ book }: Props) {
+  const isInProgress = book.status === 'in-progress';
   return (
     <>
       <div className="flex items-center justify-between p-10">
@@ -42,9 +43,29 @@ export default function MyReadingBook({ book }: Props) {
           </p>
         </div>
 
-        {/* Індикатор прогресу (червона кнопка-лампочка з пульсацією) */}
+        {/* Індикатор прогресу (червона кнопка-лампочка з пульсацією)
         <div className="mt-6 flex h-12 w-12 items-center justify-center rounded-full border-2 border-[#E85050] bg-[#E85050]/10">
           <div className="h-4 w-4 animate-pulse rounded-full bg-[#E85050] shadow-[0_0_10px_#E85050]" />
+        </div>
+      </div> */}
+
+        {/* Динамічний індикатор прогресу */}
+        <div
+          className={`mt-6 flex h-12 w-12 items-center justify-center rounded-full border-2 transition-all duration-500 ${
+            isInProgress
+              ? 'border-[#E85050] bg-[#E85050]/10 shadow-[0_0_15px_rgba(232,80,80,0.2)]'
+              : 'border-[#3E3E3E] bg-[#262626]'
+          }`}
+        >
+          {isInProgress ? (
+            // Якщо читаємо - пульсуюча лампочка
+            <div className="h-4 w-4 animate-pulse rounded-full bg-[#E85050] shadow-[0_0_10px_#E85050]" />
+          ) : (
+            // Якщо не читаємо - просто статична іконка або порожнє коло (згідно макету)
+            <svg className="h-5 w-5">
+              <use href="/sprite.svg#icon-read-off" />
+            </svg>
+          )}
         </div>
       </div>
     </>

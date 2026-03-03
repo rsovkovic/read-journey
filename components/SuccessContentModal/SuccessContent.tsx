@@ -33,7 +33,7 @@ export default function SuccessContent({
       <h3 className="text-foreground mb-2 text-xl font-bold">
         {isAdded ? 'Good job' : 'The book is read'}
       </h3>
-      <p className="text-sm text-(--text-secondary)">
+      <div className="text-sm text-(--text-secondary)">
         {isAdded ? (
           <p>
             {' '}
@@ -48,7 +48,7 @@ export default function SuccessContent({
             inseparable friends.
           </p>
         )}
-      </p>
+      </div>
     </div>
   );
 }

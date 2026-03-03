@@ -30,3 +30,29 @@ export const addBookSchema = Yup.object().shape({
     .positive('Must be positive')
     .integer('Must be an integer'),
 });
+
+// export const addReadingSchema = Yup.object().shape({
+//   page: Yup.number()
+//     .typeError('Must be a number')
+//     .required('Required')
+//     .min(1, 'Min 1')
+//     .max(book?.totalPages || 9999, `Max ${book?.totalPages || ''}`),
+// });
+
+// export const getAddReadingSchema = (book?: { totalPages?: number }) =>
+//   Yup.object().shape({
+//     page: Yup.number()
+//       .typeError('Must be a number')
+//       .required('Required')
+//       .min(1, 'Min 1')
+//       .max(book?.totalPages || 9999, `Max ${book?.totalPages || ''}`),
+//   });
+
+export const createAddReadingSchema = (totalPages: number) =>
+  Yup.object().shape({
+    page: Yup.number()
+      .typeError('Must be a number')
+      .required('Required')
+      .min(1, 'Min 1')
+      .max(totalPages, `Max ${totalPages}`),
+  });

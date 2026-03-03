@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { Button } from '../Ui/Button';
 import Image from 'next/image';
 import { BooksResponse } from '@/app/api/books';
+import { createAddReadingSchema } from '@/utils/validationSchemas';
 
 interface Props {
   book: BooksResponse;
@@ -24,22 +25,26 @@ export default function AddReading({ book, onStart, onStop }: Props) {
     ? book.progress[book.progress.length - 1].finishPage
     : 0;
 
+  const schema = createAddReadingSchema(book?.totalPages || 9999);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm({
+    resolver: yupResolver(schema),
     defaultValues: {
-      page: isReading ? '' : lastFinishedPage,
+      page: isReading ? 0 : lastFinishedPage,
     },
   });
 
   const onSubmit = (data: { page: string | number }) => {
+    const page = Number(data.page);
     if (isReading) {
-      onStop(Number(data.page));
+      onStop(page);
     } else {
-      onStart(Number(data.page));
+      onStart(page);
     }
     reset();
   };
@@ -55,17 +60,9 @@ export default function AddReading({ book, onStart, onStop }: Props) {
       <Input
         label="Page number:"
         type="number"
-        {...register('page', {
-          required: 'Required',
-          min: { value: 1, message: 'Min 1' },
-          max: {
-            value: book?.totalPages || 9999,
-            message: `Max ${book?.totalPages || ''}`,
-          },
-        })}
-        // {}
-        // error={}
-        placeholder="0"
+        {...register('page')}
+        error={errors.page?.message}
+        placeholder=""
       />
       <Button type="submit" variant="outline">
         {isReading ? 'To stop' : 'To start'}
