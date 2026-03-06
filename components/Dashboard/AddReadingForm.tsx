@@ -2,7 +2,7 @@ import { Input } from '@/components/Ui/Input';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { Button } from '../Ui/Button';
-import Image from 'next/image';
+// import Image from 'next/image';
 import { BooksResponse } from '@/app/api/books';
 import { createAddReadingSchema } from '@/utils/validationSchemas';
 
@@ -67,38 +67,40 @@ export default function AddReading({ book, onStart, onStop }: Props) {
       <Button type="submit" variant="outline">
         {isReading ? 'To stop' : 'To start'}
       </Button>
-      {/* Якщо прогресу ще немає — показуємо зірку */}
-      {!book?.progress || book.progress.length === 0 ? (
-        <div className="flex flex-col items-center justify-center gap-5 py-20 md:gap-12 lg:gap-14">
-          <div className="flex flex-col gap-3">
-            <h2 className="text-foreground text-xl font-bold">Progress</h2>
-            <p className="text-sm font-medium text-[#686868]">
-              Here you will see when and how much you read. To record, click on
-              the red button above.
-            </p>
-          </div>
-          <div className="mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-(--bg-blok) md:h-25 md:w-25">
-            <div className="relative h-8 w-8 md:h-17.5 md:w-12.5">
-              <Image
-                src="/image/star_reading.png"
-                alt="Empty library"
-                fill
-                sizes="(max-width: 768px) 32px, 50px"
-                className="object-contain"
-              />
-            </div>
-          </div>
-        </div>
-      ) : (
-        <div className="mt-8">
-          <h2 className="text-foreground mb-4 text-xl font-bold">Progress</h2>
-          {/* Тут ми пізніше створимо список сесій (компонент MyReading) */}
-          <p className="text-white">Сесії будуть тут...</p>
-        </div>
-      )}
     </form>
   );
 }
+
+// /////////////////////////////////////////////////////
+// Якщо прогресу ще немає — показуємо зірку
+//       {!book?.progress || book.progress.length === 0 ? (
+//         <div className="flex flex-col items-center justify-center gap-5 py-20 md:gap-12 lg:gap-14">
+//           <div className="flex flex-col gap-3">
+//             <h2 className="text-foreground text-xl font-bold">Progress</h2>
+//             <p className="text-sm font-medium text-[#686868]">
+//               Here you will see when and how much you read. To record, click on
+//               the red button above.
+//             </p>
+//           </div>
+//           <div className="mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-(--bg-blok) md:h-25 md:w-25">
+//             <div className="relative h-8 w-8 md:h-17.5 md:w-12.5">
+//               <Image
+//                 src="/image/star_reading.png"
+//                 alt="Empty library"
+//                 fill
+//                 sizes="(max-width: 768px) 32px, 50px"
+//                 className="object-contain"
+//               />
+//             </div>
+//           </div>
+//         </div>
+//       ) : (
+//         <div className="mt-8">
+//           <h2 className="text-foreground mb-4 text-xl font-bold">Progress</h2>
+//           {/* Тут ми пізніше створимо список сесій (компонент MyReading) */}
+//           <p className="text-white">Сесії будуть тут...</p>
+//         </div>
+//       )}
 
 /////////////////////////////////////////////
 

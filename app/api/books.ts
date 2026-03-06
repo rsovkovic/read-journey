@@ -27,7 +27,7 @@ export interface AddNewBookRequest {
   totalPages: number;
 }
 
-interface BooksProgress {
+export interface BooksProgress {
   _id: string;
   startPage: number;
   startReading: string; // ISO дата приходить рядком

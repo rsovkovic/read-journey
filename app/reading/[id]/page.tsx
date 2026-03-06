@@ -16,6 +16,7 @@ import toast from 'react-hot-toast';
 import { AxiosError } from 'axios';
 import Modal from '@/components/Modal/Modal';
 import { useState } from 'react';
+import DetailsContainer from '@/components/Details/DetailsContainer';
 
 export default function ReadingPage() {
   const { id } = useParams(); // Отримуємо ID з URL
@@ -79,6 +80,7 @@ export default function ReadingPage() {
               onStart={(page) => startMutation.mutate(page)}
               onStop={(page) => stopMutation.mutate(page)}
             />
+            <DetailsContainer book={book} />
           </Dashboard>
 
           <div className="bg-secondary-bg size-[stretch] min-w-0 flex-1 rounded-[30px]">
