@@ -39,7 +39,7 @@ export default function DiaryItem({
             {dmy}
           </p>
           <p className="text-foreground text-xl">{percent}%</p>
-          <p className="text-[10px] text-[#686868]">
+          <p className="text-[12px] font-medium text-[#686868]">
             {durationMinutes} minutes
           </p>
         </div>
@@ -60,7 +60,7 @@ export default function DiaryItem({
             </svg>
           </button>
         </div>
-        <p className="text-[10px] text-[#686868]">
+        <p className="text-[12px] font-medium text-[#686868]">
           {session.speed} pages
           <br />
           per hour

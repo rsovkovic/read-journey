@@ -78,6 +78,10 @@ button:not(:disabled) {
   cursor: pointer;
 }
 
+.CircularProgressbar-text {
+  font-weight: 700;
+}
+
 @utility container {
   margin-inline: auto;
   width: 100%;

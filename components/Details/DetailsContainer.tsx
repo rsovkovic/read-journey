@@ -52,20 +52,29 @@ export default function DetailsContainer({ book }: { book: BooksResponse }) {
           </button>
         </div>
       </div>
+      {activeView === 'stats' && (
+        <p className="hidden pb-5 text-sm font-medium text-[#686868] lg:block">
+          Each page, each chapter is a new round of knowledge, a new step
+          towards understanding. By rewriting statistics, we create our own
+          reading history.
+        </p>
+      )}
 
       {/* Контент вкладок */}
-      {activeView === 'diary' ? (
-        <Diary
-          progress={book.progress || []}
-          totalPages={book.totalPages}
-          bookId={book._id}
-        />
-      ) : (
-        <Statistics
-          progress={book.progress || []}
-          totalPages={book.totalPages}
-        />
-      )}
+      <div className="rounded-3xl bg-(--input-bg) p-5">
+        {activeView === 'diary' ? (
+          <Diary
+            progress={book.progress || []}
+            totalPages={book.totalPages}
+            bookId={book._id}
+          />
+        ) : (
+          <Statistics
+            progress={book.progress || []}
+            totalPages={book.totalPages}
+          />
+        )}
+      </div>
     </div>
   );
 }
