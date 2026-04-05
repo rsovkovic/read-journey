@@ -13,13 +13,12 @@ export const FiltersForm = ({ onFilter }: Props) => {
   const { register, handleSubmit, reset } = useForm<Filters>();
 
   const onSubmit = (data: Filters) => {
-    // Відфільтровуємо порожні значення перед відправкою
     onFilter(data);
   };
 
   const handleReset = () => {
-    reset(); // Очищає поля форми в UI
-    onFilter({ title: '', author: '' }); // Відправляє пусті фільтри "вгору", щоб оновити список книг
+    reset();
+    onFilter({ title: '', author: '' });
   };
 
   return (
@@ -32,7 +31,6 @@ export const FiltersForm = ({ onFilter }: Props) => {
         <span className="mr-2 text-center text-sm font-medium whitespace-nowrap text-(--text-secondary)">
           Book title:
         </span>
-        {/* Інпут Title */}
         <input
           {...register('title')}
           aria-label="Book title"
@@ -55,17 +53,14 @@ export const FiltersForm = ({ onFilter }: Props) => {
         />
       </div>
       <div className="flex gap-2">
-        {/* Кнопка To apply */}
         <button
           type="submit"
           className="text-foreground hover:bg-foreground hover:text-background w-fit rounded-full border border-white/20 px-7 py-3 font-bold transition duration-200 ease-out active:scale-95"
         >
           To apply
         </button>
-
-        {/* Нова кнопка Reset */}
         <button
-          type="button" // Важливо! type="button", щоб не спрацьовував сабміт форми
+          type="button"
           onClick={handleReset}
           className="hover:text-foreground px-4 py-3 text-sm font-medium text-(--text-secondary) underline transition-colors"
         >

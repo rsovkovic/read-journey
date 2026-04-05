@@ -25,19 +25,17 @@ export default function Header() {
 
       toast.success('Successfully logged out!', { id: toastId });
     } catch (error) {
-      // 2. Якщо бекенд повернув помилку (наприклад, 401 або 500)
-      // ТЗ каже: опрацювати і відобразити помилку
       const err = error as AxiosError<{ message?: string }>;
 
       const errorMessage =
         err.response?.data?.message || 'Server error during logout';
       toast.error(errorMessage, { id: toastId });
     } finally {
-      setLogout(); //  метод із Zustand (очищення стору та localStorage)
+      setLogout();
 
-      if (isMenuOpen) setIsMenuOpen(false); // Закриваємо бургер
+      if (isMenuOpen) setIsMenuOpen(false);
 
-      router.push('/register'); // Редирект на сторінку реєстрації
+      router.push('/register');
     }
   };
 
@@ -57,13 +55,8 @@ export default function Header() {
           <nav aria-label="Main Navigation" className="hidden md:block">
             <MainNavigation />
           </nav>
-          {/* БЛОК КОРИСТУВАЧА (Поки що заглушка) */}
           <div className="flex items-center gap-4">
-            {/* Тут буде ваш компонент UserBar */}
-
             <UserBar />
-
-            {/* Log out (тільки десктоп) */}
             <Button
               type="submit"
               variant="outline"
@@ -72,8 +65,6 @@ export default function Header() {
             >
               Log out
             </Button>
-
-            {/* Бургер-іконка (тільки мобайл/планшет) */}
             <button className="md:hidden" onClick={() => setIsMenuOpen(true)}>
               <svg className="h-7 w-7 stroke-white">
                 <use href="/sprite.svg#icon-burger-menu" />
@@ -82,12 +73,11 @@ export default function Header() {
           </div>
         </div>
       </div>
-      {/* Mobile Menu Overlay */}
+
       <MobileMenu
         isOpen={isMenuOpen}
         onClose={() => setIsMenuOpen(false)}
         onLogout={handleLogout}
-        // onLogout={setLogout}
       />
     </header>
   );

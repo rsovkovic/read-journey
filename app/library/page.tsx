@@ -32,28 +32,19 @@ export default function MyLibraryPage() {
   >({
     mutationFn: addNewBook,
     onSuccess: () => {
-      // Оновлюємо кеш списку книг, щоб нова книга з'явилася відразу
       queryClient.invalidateQueries({ queryKey: ['user-books'] });
 
-      // ТЗ: Відкрити модальне вікно про успіх
-      // console.log('Книга додана:', newBook);
       setIsSuccessModalOpen(true);
-      // toast.success(`Book "${data.title}" added!`);
     },
     onError: (error) => {
-      // ТЗ: Обробити помилку і показати нотифікацію
       const message = error.response?.data?.message || 'Something went wrong';
       toast.error(message);
     },
   });
 
-  const handleAddBook = (data: AddNewBookRequest) => {
-    mutate(data);
-  };
   const { mutate: deleteBook } = useMutation({
-    mutationFn: (id: string) => RemoveBookById(id), // Твоя функція з api
+    mutationFn: (id: string) => RemoveBookById(id),
     onSuccess: () => {
-      // Оновлюємо список після видалення
       queryClient.invalidateQueries({ queryKey: ['user-books'] });
       toast.success('Book deleted successfully');
     },
@@ -65,16 +56,13 @@ export default function MyLibraryPage() {
   return (
     <section>
       <div className="container">
-        <div className="mt-4 mb-8 flex flex-col items-start gap-4 lg:flex-row">
+        <div className="mt-4 mb-8 flex flex-col items-stretch gap-4 lg:flex-row">
           <Dashboard>
-            {/* <AddBookForm onAddBook={handleAddBook} isLoading={isPending} /> */}
             <AddBookForm
               isLoading={isPending}
               onAddBook={(data, resetForm) => {
-                // Викликаємо мутацію
                 mutate(data, {
                   onSuccess: () => {
-                    // Тільки якщо бекенд відповів "OK" — очищуємо форму
                     resetForm();
                   },
                 });

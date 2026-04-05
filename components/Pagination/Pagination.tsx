@@ -1,5 +1,3 @@
-// import { ChevronLeft, ChevronRight } from 'lucide-react';
-
 interface PaginationProps {
   total: number;
   page: number;
@@ -24,7 +22,6 @@ export default function Pagination({
         <svg className="h-4 w-4 stroke-white sm:h-5 sm:w-5">
           <use href="/sprite.svg#icon-chevron-left" />
         </svg>
-        {/* <ChevronLeft size={40} /> */}
       </button>
       <button
         type="button"
@@ -33,7 +30,6 @@ export default function Pagination({
         disabled={page >= total || isLoading}
         aria-label="Next page"
       >
-        {/* <ChevronRight size={40} /> */}
         <svg className="h-4 w-4 stroke-white sm:h-5 sm:w-5">
           <use href="/sprite.svg#icon-chevron-right" />
         </svg>

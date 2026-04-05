@@ -31,19 +31,16 @@ export default function RecommendedPage() {
 
   useEffect(() => {
     const handleResize = () => {
-      // Якщо ширина менша за 640px (sm у Tailwind) — ставимо 2 книги
-      // Якщо від 640px до 1024px — можна поставити 4 книги
-      // Якщо більше 1024px — 10 книг (або 5, якщо хочете рівно один ряд)
       if (window.innerWidth < 768) {
         setLimit(2);
       } else if (window.innerWidth < 1040) {
-        setLimit(8); // наприклад, 2 ряди по 4
+        setLimit(8);
       } else {
-        setLimit(10); // 2 ряди по 5
+        setLimit(10);
       }
     };
 
-    handleResize(); // викликаємо при першому рендері
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -60,14 +57,11 @@ export default function RecommendedPage() {
   >({
     mutationFn: (id: string) => addNewBookById(id),
     onSuccess: () => {
-      // 1. Оновлюємо кеш 'user-books', щоб у бібліотеці відразу з'явилася нова книга
       queryClient.invalidateQueries({ queryKey: ['user-books'] });
 
-      // 2. Закриваємо поточну модалку з деталями
       setSelectedBook(null);
 
       setIsSuccessModalOpen(true);
-      // toast.success(`Book "${data.title}" added!`);
     },
     onError: (error) => {
       const message = error.response?.data?.message || 'Something went wrong';

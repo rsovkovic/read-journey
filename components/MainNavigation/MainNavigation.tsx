@@ -3,10 +3,9 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-// Додаємо опис типів для пропсів
 interface MainNavigationProps {
   isMobile?: boolean;
-  onClose?: () => void; // Називаємо так само, як передаємо в MobileMenu
+  onClose?: () => void;
 }
 
 export default function MainNavigation({
@@ -31,11 +30,10 @@ export default function MainNavigation({
           <li key={link.href}>
             <Link
               href={link.href}
-              onClick={onClose} // Закриваємо меню при кліку на посилання
+              onClick={onClose}
               className={`hover:text-foreground relative pb-2 text-lg transition-colors ${isActive ? 'text-foreground font-bold' : 'text-zinc-400'} `}
             >
               {link.name}
-              {/* Синя лінія активності для десктопа */}
               {isActive && (
                 <span className="bg-accent absolute bottom-0 left-0 h-1 w-full rounded-full" />
               )}

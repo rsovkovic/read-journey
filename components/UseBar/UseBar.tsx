@@ -4,7 +4,6 @@ import { useAuthStore } from '@/lib/store/authStore';
 export const UserBar = () => {
   const { user } = useAuthStore();
 
-  // Беремо першу літеру імені
   const initial = user?.name ? user.name.charAt(0).toUpperCase() : 'U';
 
   return (
@@ -12,7 +11,6 @@ export const UserBar = () => {
       <div className="text-foreground flex h-9 w-9 items-center justify-center rounded-full border border-(--input-border) bg-(--input-bg) text-base font-bold sm:h-10 sm:w-10 sm:text-lg">
         {initial}
       </div>
-      {/* Приховуємо ім'я на мобайлі та планшеті згідно з логікою бургер-меню */}
       <span className="text-foreground hidden font-bold lg:block">
         {user?.name || 'User'}
       </span>

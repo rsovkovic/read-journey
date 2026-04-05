@@ -28,7 +28,6 @@ export default function SuccessContent({
             />
           )}
         </div>
-        {/* Або картинки з макету */}
       </div>
       <h3 className="text-foreground mb-2 text-xl font-bold">
         {isAdded ? 'Good job' : 'The book is read'}
@@ -52,5 +51,3 @@ export default function SuccessContent({
     </div>
   );
 }
-
-/* Your book is now in the library! The joy knows no bounds and now you can start your training */

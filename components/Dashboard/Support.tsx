@@ -32,18 +32,17 @@ export const SupportBlock = () => {
           </p>
         </li>
       </ol>
-
-      <div className="mt-5 flex items-center justify-between pt-4">
-        <Link
-          href="/library"
-          className="hover:text-foreground text-sm text-(--text-secondary) underline transition"
-        >
+      <Link
+        href="/library"
+        className="group mt-5 flex items-center justify-between pt-4"
+      >
+        <span className="group-hover:text-foreground text-sm text-(--text-secondary) underline transition">
           My library
-        </Link>
-        <svg className="h-6 w-6">
+        </span>
+        <svg className="h-6 w-6 transition-transform group-hover:translate-x-1">
           <use href="/sprite.svg#icon-log-in" />
         </svg>
-      </div>
+      </Link>
     </div>
   );
 };

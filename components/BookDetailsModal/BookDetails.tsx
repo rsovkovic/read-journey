@@ -15,7 +15,6 @@ export default function BookDetails({ book, actionButton }: BookDetailsProps) {
           alt={book.title}
           fill
           priority
-          // className="object-contain"
           sizes="(min-width: 768px) 152px, 144px"
         />
       </div>
@@ -24,7 +23,6 @@ export default function BookDetails({ book, actionButton }: BookDetailsProps) {
       </h3>
       <p className="mb-2 text-sm text-[#686868]">{book.author}</p>
       <p className="text-foreground mb-8 text-xs">{book.totalPages} pages</p>
-      {/* Сюди ми передамо кнопку: або "Add", або "Start reading" */}
       {actionButton}
     </div>
   );

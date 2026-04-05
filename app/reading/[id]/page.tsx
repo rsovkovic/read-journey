@@ -19,7 +19,7 @@ import { useState } from 'react';
 import DetailsContainer from '@/components/Details/DetailsContainer';
 
 export default function ReadingPage() {
-  const { id } = useParams(); // Отримуємо ID з URL
+  const { id } = useParams();
   const queryClient = useQueryClient();
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
 
@@ -28,24 +28,20 @@ export default function ReadingPage() {
     queryFn: () => getBookById(id as string),
   });
 
-  // Мутація для START
   const startMutation = useMutation({
     mutationFn: (page: number) =>
       StartReadingBook({ id: id as string, page: page }),
     onSuccess: () => {
-      // Оновлюємо дані книги після успішного старту
       queryClient.invalidateQueries({ queryKey: ['book', id] });
-      toast.success('Reading session started!'); // Успіх
+      toast.success('Reading session started!');
     },
     onError: (error: AxiosError<{ message: string }>) => {
-      // Дістаємо повідомлення про помилку з відповіді бекенду
       const errorMessage =
         error.response?.data?.message || 'Something went wrong';
-      toast.error(errorMessage); // Відображення помилки у вспливаючому вікні
+      toast.error(errorMessage);
     },
   });
 
-  // Мутація для STOP
   const stopMutation = useMutation({
     mutationFn: (page: number) =>
       FinishReadingBook({ id: id as string, page: page }),
@@ -54,7 +50,7 @@ export default function ReadingPage() {
       queryClient.invalidateQueries({ queryKey: ['book', id] });
 
       if (finishedPage === book?.totalPages) {
-        setIsSuccessModalOpen(true); // Відкриваємо модалку привіту
+        setIsSuccessModalOpen(true);
       } else {
         toast.success('Reading session stopped!');
       }

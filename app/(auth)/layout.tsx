@@ -7,11 +7,8 @@ export default function AuthLayout({
 }) {
   return (
     <main className="bg-background container flex min-h-screen items-center justify-center p-5 md:p-8">
-      {/* Головний контейнер з твоїм --bg-secondary */}
       <div className="flex min-h-175 w-full max-w-7xl flex-col gap-3 overflow-hidden rounded-[30px] lg:flex-row">
-        {/* ЛІВА ЧАСТИНА: Форми та Лого */}
         <div className="bg-secondary-bg flex w-full flex-col rounded-[30px] p-8 md:p-16 lg:w-1/2">
-          {/* Логотип */}
           <div className="mb-10 flex items-center gap-2 md:mb-20">
             <div className="flex h-8 w-8 items-center justify-center">
               <svg>
@@ -23,26 +20,21 @@ export default function AuthLayout({
             </span>
           </div>
 
-          {/* Заголовок (Expand your mind...) */}
           <h1 className="text-foreground mb-10 max-w-112.5 text-5xl leading-[1.1] font-semibold md:text-6xl">
             Expand your mind, reading{' '}
             <span className="text-(--text-secondary)">a book</span>
           </h1>
 
-          {/* Сюди підставляються форми (LoginForm або RegisterForm) */}
           <div className="grow">{children}</div>
         </div>
 
-        {/* ПРАВА ЧАСТИНА: iPhone m-5  h-full */}
         <div className="bg-secondary-bg hidden items-end justify-center overflow-hidden rounded-[30px] px-10 pt-10 lg:flex lg:w-1/2">
           <div className="relative w-full max-w-100">
-            {/* Використовуємо Next.js Image для оптимізації */}
             <Image
-              src="/image/iPhone-15-Black.png" // Поклади картинку в папку public
+              src="/image/iPhone-15-Black.png"
               alt="iPhone App Preview"
               width={405}
               height={735}
-              // className="object-contain" // Зберігає пропорції всередині контейнера
               priority
               className="h-auto w-full"
             />

@@ -30,7 +30,7 @@ export interface AddNewBookRequest {
 export interface BooksProgress {
   _id: string;
   startPage: number;
-  startReading: string; // ISO дата приходить рядком
+  startReading: string;
   finishPage: number;
   finishReading: string;
   speed: number;
@@ -155,15 +155,3 @@ export const getBookById = async (id: string): Promise<BooksResponse> => {
   const { data } = await api.get<BooksResponse>(`/books/${id}`);
   return data;
 };
-
-// ...................................................
-
-// const [filters, setFilters] = useState({ title: '', author: '' });
-// const [page, setPage] = useState(1);
-
-// ...........................
-
-// const { data } = useQuery({
-//   queryKey: ['books', filters, page], // Запит перезапуститься при зміні будь-якого з цих значень
-//   queryFn: () => fetchBooks({ ...filters, page, limit: 10 }),
-// });

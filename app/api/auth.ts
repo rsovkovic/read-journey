@@ -6,7 +6,6 @@ export interface RegisterData {
   password: string;
 }
 
-// Тип для даних логіну
 export interface LoginData {
   email: string;
   password: string;
@@ -65,65 +64,3 @@ export const usersCurrentRefresh = async (
   );
   return data;
 };
-
-// export interface RegisterData {
-//   name: string;
-//   email: string;
-//   password: string;
-// }
-
-// export interface LoginData {
-//   email: string;
-//   password: string;
-// }
-
-// export interface AuthUser {
-//   name: string;
-//   email: string;
-// }
-
-// // REGISTER
-// export const register = async (userData: RegisterData): Promise<AuthUser> => {
-//   const res = await fetch('/api/auth/register', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(userData),
-//     credentials: 'include',
-//   });
-
-//   if (!res.ok) {
-//     const error = await res.json();
-//     throw new Error(error.message);
-//   }
-
-//   return res.json();
-// };
-
-// // LOGIN
-// export const login = async (userData: LoginData): Promise<AuthUser> => {
-//   const res = await fetch('/api/auth/login', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(userData),
-//     credentials: 'include',
-//   });
-
-//   if (!res.ok) {
-//     const error = await res.json();
-//     throw new Error(error.message);
-//   }
-
-//   return res.json();
-// };
-
-// // LOGOUT
-// export const logout = async () => {
-//   await fetch('/api/auth/logout', {
-//     method: 'POST',
-//     credentials: 'include',
-//   });
-// };

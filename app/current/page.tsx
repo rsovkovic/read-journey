@@ -1,32 +1,30 @@
-'use client';
-import { useEffect, useState } from 'react';
-import { usersCurrent } from '@/app/api/auth'; // ПЕРЕВІРТЕ ШЛЯХ ДО ФАЙЛУ
-import { SupportBlock } from '@/components/Dashboard/Support';
-import { Quote } from '@/components/Dashboard/Quote';
+// 'use client';
+// import { useEffect, useState } from 'react';
+// import { usersCurrent } from '@/app/api/auth';
+// import { SupportBlock } from '@/components/Dashboard/Support';
+// import { Quote } from '@/components/Dashboard/Quote';
 
-export default function TestPage() {
-  const [result, setResult] = useState('Завантаження...');
+// export default function TestPage() {
+//   const [result, setResult] = useState('loading...');
 
-  useEffect(() => {
-    // Викликаємо вашу функцію відразу при завантаженні
-    usersCurrent()
-      .then((data) => {
-        console.log('Дані отримано:', data);
-        setResult(JSON.stringify(data, null, 2)); // Виведемо дані текстом на екран
-      })
-      .catch((err) => {
-        console.error('Помилка:', err);
-        setResult('Помилка: ' + err.message);
-      });
-  }, []);
+//   useEffect(() => {
+//     usersCurrent()
+//       .then((data) => {
+//         console.log('Data received:', data);
+//         setResult(JSON.stringify(data, null, 2));
+//       })
+//       .catch((err) => {
+//         console.error('error:', err);
+//         setResult('error: ' + err.message);
+//       });
+//   }, []);
 
-  return (
-    <div>
-      <h1>Результат перевірки API:</h1>
-      {/* pre збереже форматування JSON, щоб було зручно читати */}
-      <pre>{result}</pre>
-      <SupportBlock />
-      <Quote />
-    </div>
-  );
-}
+//   return (
+//     <div>
+//       <h1> results API:</h1>
+//       <pre>{result}</pre>
+//       <SupportBlock />
+//       <Quote />
+//     </div>
+//   );
+// }
