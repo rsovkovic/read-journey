@@ -177,7 +177,7 @@ export default function AddBookForm({ onAddBook, isLoading }: Props) {
         error={errors.totalPages?.message}
         placeholder="0"
       />
-      <div className="mt-5 flex gap-2">
+      <div className="mt-5 mb-5 flex gap-2">
         <Button type="submit" variant="outline" isLoading={isLoading}>
           Add book
         </Button>

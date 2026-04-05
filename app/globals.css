@@ -89,6 +89,7 @@ button:not(:disabled) {
 
   @media (width >= theme(--breakpoint-sm)) {
     max-width: 640px;
+     /* max-width: 100%; */
     padding-inline: 1.25rem;
   }
 
