@@ -47,6 +47,13 @@ npm run dev
 npm run build
 
 
+ 🎨 Design (Figma)
+The project was developed according to the layout:
+-https://www.figma.com/file/z3m0rdBcEfLTJUBDkAKhWQ/BOOKS-READING
+
+📑 Technical task
+https://docs.google.com/spreadsheets/d/15JU0VnynkmDzm31ZvN0ZUjsl1MduNTDM9mi5JtFwWK0
+
 📈 Future Improvements
 [ ] Google Books API Integration: To automatically fetch book details and covers by title or ISBN.
 
