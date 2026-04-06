@@ -4,11 +4,20 @@ import { useQuery } from '@tanstack/react-query';
 import { BooksResponse, BookStatus, getOwnBooks } from '@/app/api/books';
 import BookCard from '@/components/BookCard/BookCard';
 import Image from 'next/image';
+import CustomDropdown from '@/components/Ui/CustomDropdown';
 
 interface Props {
   onDeleteBook: (id: string) => void;
   onBookClick: (book: BooksResponse) => void;
 }
+
+const filterOptions: { label: string; value: BookStatus | undefined }[] = [
+  { label: 'All books', value: undefined },
+  { label: 'Unread', value: 'unread' },
+  { label: 'In progress', value: 'in-progress' },
+  { label: 'Done', value: 'done' },
+];
+
 export default function MyLibraryBooks({ onDeleteBook, onBookClick }: Props) {
   const [status, setStatus] = useState<BookStatus | undefined>(undefined);
 
@@ -18,28 +27,23 @@ export default function MyLibraryBooks({ onDeleteBook, onBookClick }: Props) {
   });
 
   const books = data || [];
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <p className="text-white">Loading...</p>;
 
   return (
     <div className="flex flex-col gap-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">My Library</h1>
-        <select
-          onChange={(e) =>
-            setStatus((e.target.value as BookStatus) || undefined)
-          }
-          className="bg-background rounded-md border border-white/20 px-3 py-2 text-sm"
-        >
-          <option value="">All books</option>
-          <option value="unread">Unread</option>
-          <option value="in-progress">In progress</option>
-          <option value="done">Done</option>
-        </select>
+        <h1 className="text-xl font-bold md:text-2xl">My Library</h1>
+
+        <CustomDropdown<BookStatus | undefined>
+          options={filterOptions}
+          selectedValue={status}
+          onChange={setStatus}
+        />
       </div>
 
       {books.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-20 text-center">
-          <div className="mb-5 flex h-25 w-25 items-center justify-center rounded-full bg-(--bg-blok) md:h-32.5 md:w-32.5">
+          <div className="mb-5 flex h-25 w-25 items-center justify-center rounded-full bg-[#262626] md:h-32.5 md:w-32.5">
             <div className="relative h-12.5 w-12.5 md:h-17.5 md:w-17.5">
               <Image
                 src="/image/books_desktop.png"
@@ -50,13 +54,9 @@ export default function MyLibraryBooks({ onDeleteBook, onBookClick }: Props) {
               />
             </div>
           </div>
-
           <p className="max-w-50 text-sm leading-5 md:max-w-70 lg:max-w-none">
-            To start training, add
-            <span className="text-(--text-secondary)">
-              {' '}
-              some of your books{' '}
-            </span>
+            To start training, add{' '}
+            <span className="text-white/50">some of your books</span>{' '}
             <span className="lg:block">or from the recommended ones.</span>
           </p>
         </div>
